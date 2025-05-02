@@ -26,7 +26,7 @@ async function handleRequest(request) {
     const requestData = await request.json();
     
     // Your Google Gemini API key (will be hidden from users)
-    const API_KEY = "AIzaSyBbXah_hCxDd6Vu5tL1PAsoSXZZ2qmnqs4"; // Replace with your real API key
+    const API_KEY = "AIzaSyBbXah_hCxDd6Vu5tL1PAsoSXZZ2qmnqs4"; 
     
     // Forward the request to Google's Gemini API
     const response = await fetch(
