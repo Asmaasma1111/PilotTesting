@@ -1,0 +1,789 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Research Instrument Pilot Testing Service</title>\
+    <style>\
+        :root \{\
+            --primary: #6c5ce7;\
+            --primary-dark: #5541d7;\
+            --secondary: #f9a826;\
+            --secondary-dark: #e67e22;\
+            --dark: #1a1a2e;\
+            --darker: #121420;\
+            --light: #f8f9fa;\
+            --text: #e6e6e6;\
+        \}\
+\
+        * \{\
+            margin: 0;\
+            padding: 0;\
+            box-sizing: border-box;\
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;\
+        \}\
+\
+        body \{\
+            background-color: var(--darker);\
+            color: var(--text);\
+        \}\
+\
+        .container \{\
+            max-width: 1200px;\
+            margin: 0 auto;\
+            padding: 20px;\
+        \}\
+\
+        header \{\
+            background: rgba(26, 26, 46, 0.9);\
+            padding: 20px 0;\
+            position: sticky;\
+            top: 0;\
+            z-index: 100;\
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);\
+        \}\
+\
+        .header-content \{\
+            display: flex;\
+            justify-content: space-between;\
+            align-items: center;\
+        \}\
+\
+        .logo \{\
+            display: flex;\
+            align-items: center;\
+            text-decoration: none;\
+        \}\
+\
+        .logo-icon \{\
+            width: 40px;\
+            height: 40px;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            font-weight: bold;\
+            font-size: 1.4rem;\
+            color: var(--dark);\
+            background: var(--primary);\
+            border-radius: 8px;\
+        \}\
+\
+        .logo-text \{\
+            font-size: 1.5rem;\
+            font-weight: 700;\
+            color: white;\
+            margin-left: 10px;\
+        \}\
+\
+        .main-content \{\
+            padding: 40px 0;\
+        \}\
+\
+        .hero \{\
+            text-align: center;\
+            padding: 60px 0;\
+            max-width: 800px;\
+            margin: 0 auto;\
+        \}\
+\
+        .hero h1 \{\
+            font-size: 2.5rem;\
+            margin-bottom: 20px;\
+        \}\
+\
+        .hero p \{\
+            font-size: 1.2rem;\
+            color: #b8bec5;\
+            margin-bottom: 30px;\
+            line-height: 1.6;\
+        \}\
+\
+        .highlight \{\
+            color: var(--primary);\
+        \}\
+\
+        .analysis-form \{\
+            background: rgba(255, 255, 255, 0.03);\
+            border-radius: 15px;\
+            padding: 30px;\
+            max-width: 800px;\
+            margin: 0 auto 40px;\
+            border: 1px solid rgba(255, 255, 255, 0.05);\
+        \}\
+\
+        .form-title \{\
+            font-size: 1.8rem;\
+            margin-bottom: 20px;\
+            color: var(--primary);\
+            text-align: center;\
+        \}\
+\
+        .form-group \{\
+            margin-bottom: 20px;\
+        \}\
+\
+        .form-group label \{\
+            display: block;\
+            margin-bottom: 8px;\
+            font-weight: 500;\
+        \}\
+\
+        .form-group input,\
+        .form-group textarea \{\
+            width: 100%;\
+            padding: 12px;\
+            background: rgba(0, 0, 0, 0.2);\
+            border: 1px solid rgba(255, 255, 255, 0.1);\
+            border-radius: 8px;\
+            color: var(--text);\
+            font-size: 1rem;\
+        \}\
+\
+        .form-group textarea \{\
+            min-height: 120px;\
+            resize: vertical;\
+        \}\
+\
+        .form-group input:focus,\
+        .form-group textarea:focus \{\
+            outline: none;\
+            border-color: var(--primary);\
+        \}\
+\
+        .btn \{\
+            display: inline-block;\
+            padding: 12px 24px;\
+            background: var(--primary);\
+            color: white;\
+            border: none;\
+            border-radius: 8px;\
+            font-size: 1rem;\
+            font-weight: 600;\
+            cursor: pointer;\
+            transition: all 0.3s;\
+        \}\
+\
+        .btn:hover \{\
+            background: var(--primary-dark);\
+            transform: translateY(-3px);\
+        \}\
+\
+        .btn-block \{\
+            display: block;\
+            width: 100%;\
+        \}\
+\
+        .btn-secondary \{\
+            background: var(--secondary);\
+            color: var(--dark);\
+        \}\
+\
+        .btn-secondary:hover \{\
+            background: var(--secondary-dark);\
+        \}\
+\
+        .result-container \{\
+            background: rgba(255, 255, 255, 0.03);\
+            border-radius: 15px;\
+            padding: 30px;\
+            max-width: 800px;\
+            margin: 40px auto;\
+            display: none;\
+            border: 1px solid rgba(255, 255, 255, 0.05);\
+        \}\
+\
+        .result-title \{\
+            font-size: 1.8rem;\
+            margin-bottom: 20px;\
+            color: var(--primary);\
+        \}\
+\
+        .result-preview \{\
+            margin-bottom: 30px;\
+            padding-bottom: 20px;\
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);\
+        \}\
+\
+        .blur-overlay \{\
+            position: relative;\
+        \}\
+\
+        .blur-content \{\
+            filter: blur(5px);\
+            user-select: none;\
+            pointer-events: none;\
+            max-height: 200px;\
+            overflow: hidden;\
+        \}\
+\
+        .blur-message \{\
+            position: absolute;\
+            top: 50%;\
+            left: 50%;\
+            transform: translate(-50%, -50%);\
+            background: rgba(0, 0, 0, 0.7);\
+            padding: 15px 30px;\
+            border-radius: 8px;\
+            text-align: center;\
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\
+        \}\
+\
+        .payment-options \{\
+            margin-top: 30px;\
+        \}\
+\
+        .payment-title \{\
+            font-size: 1.4rem;\
+            margin-bottom: 20px;\
+            text-align: center;\
+        \}\
+\
+        .payment-buttons \{\
+            display: flex;\
+            justify-content: center;\
+            gap: 20px;\
+            flex-wrap: wrap;\
+        \}\
+\
+        .hidden \{\
+            display: none;\
+        \}\
+\
+        .loading \{\
+            display: flex;\
+            justify-content: center;\
+            align-items: center;\
+            padding: 40px;\
+        \}\
+\
+        .spinner \{\
+            border: 4px solid rgba(255, 255, 255, 0.1);\
+            border-radius: 50%;\
+            border-top: 4px solid var(--primary);\
+            width: 40px;\
+            height: 40px;\
+            animation: spin 1s linear infinite;\
+        \}\
+\
+        @keyframes spin \{\
+            0% \{ transform: rotate(0deg); \}\
+            100% \{ transform: rotate(360deg); \}\
+        \}\
+\
+        .features \{\
+            display: grid;\
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\
+            gap: 30px;\
+            margin: 60px 0;\
+        \}\
+\
+        .feature-card \{\
+            background: rgba(255, 255, 255, 0.03);\
+            border-radius: 15px;\
+            padding: 25px;\
+            border: 1px solid rgba(255, 255, 255, 0.05);\
+            transition: all 0.3s;\
+        \}\
+\
+        .feature-card:hover \{\
+            transform: translateY(-10px);\
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);\
+            border-color: rgba(108, 92, 231, 0.2);\
+        \}\
+\
+        .feature-icon \{\
+            font-size: 2.5rem;\
+            color: var(--primary);\
+            margin-bottom: 15px;\
+        \}\
+\
+        .feature-title \{\
+            font-size: 1.3rem;\
+            margin-bottom: 10px;\
+        \}\
+\
+        .feature-desc \{\
+            color: #b8bec5;\
+            line-height: 1.6;\
+        \}\
+\
+        footer \{\
+            background: var(--darker);\
+            padding: 40px 0 20px;\
+            border-top: 1px solid rgba(255, 255, 255, 0.05);\
+            margin-top: 60px;\
+        \}\
+\
+        .footer-content \{\
+            text-align: center;\
+        \}\
+\
+        .footer-logo \{\
+            margin-bottom: 20px;\
+        \}\
+\
+        .copyright \{\
+            color: #7a8595;\
+            font-size: 0.9rem;\
+            margin-top: 20px;\
+        \}\
+\
+        #completed-analysis \{\
+            white-space: pre-wrap;\
+        \}\
+\
+        table \{\
+            width: 100%;\
+            border-collapse: collapse;\
+            margin: 15px 0;\
+            background-color: rgba(255, 255, 255, 0.03);\
+        \}\
+\
+        table, th, td \{\
+            border: 1px solid rgba(255, 255, 255, 0.1);\
+        \}\
+\
+        th, td \{\
+            padding: 10px;\
+            text-align: left;\
+        \}\
+\
+        th \{\
+            background-color: rgba(108, 92, 231, 0.1);\
+        \}\
+        \
+        @media (max-width: 768px) \{\
+            .hero h1 \{\
+                font-size: 2rem;\
+            \}\
+            \
+            .form-title, .result-title \{\
+                font-size: 1.6rem;\
+            \}\
+            \
+            .analysis-form, .result-container \{\
+                padding: 20px;\
+            \}\
+            \
+            .payment-buttons \{\
+                flex-direction: column;\
+            \}\
+        \}\
+    </style>\
+</head>\
+<body>\
+    <header>\
+        <div class="container header-content">\
+            <a href="#" class="logo">\
+                <div class="logo-icon">R</div>\
+                <div class="logo-text">Research Pilot Tester</div>\
+            </a>\
+        </div>\
+    </header>\
+\
+    <main class="main-content">\
+        <div class="container">\
+            <section class="hero">\
+                <h1>Expert <span class="highlight">Pilot Testing</span> for Your Research Instruments</h1>\
+                <p>Get professional feedback on your questionnaires, interview guides, and research tools instantly. Our AI-powered service provides detailed analysis following established research methodology principles.</p>\
+            </section>\
+\
+            <section class="features">\
+                <div class="feature-card">\
+                    <div class="feature-icon">
+\f1 \uc0\u9889 
+\f0 </div>\
+                    <h3 class="feature-title">Instant Analysis</h3>\
+                    <p class="feature-desc">Receive comprehensive evaluation of your research instrument in seconds instead of waiting days for expert reviews.</p>\
+                </div>\
+                \
+                <div class="feature-card">\
+                    <div class="feature-icon">
+\f1 \uc0\u55358 \u56800 
+\f0 </div>\
+                    <h3 class="feature-title">Methodological Rigor</h3>\
+                    <p class="feature-desc">Our system analyzes your tools against established research methodology principles, providing academically sound feedback.</p>\
+                </div>\
+                \
+                <div class="feature-card">\
+                    <div class="feature-icon">
+\f1 \uc0\u55357 \u56541 
+\f0 </div>\
+                    <h3 class="feature-title">Detailed Reports</h3>\
+                    <p class="feature-desc">Get detailed analysis tables with specific suggestions for improving each question in your research instrument.</p>\
+                </div>\
+            </section>\
+\
+            <form id="analysis-form" class="analysis-form">\
+                <h2 class="form-title">Submit Your Research Instrument</h2>\
+                \
+                <div class="form-group">\
+                    <label for="research-title">Research Title</label>\
+                    <input type="text" id="research-title" name="research-title" placeholder="Enter your research title" required>\
+                </div>\
+                \
+                <div class="form-group">\
+                    <label for="research-questions">Research Question(s)</label>\
+                    <textarea id="research-questions" name="research-questions" placeholder="Enter your research question(s)" required></textarea>\
+                </div>\
+                \
+                <div class="form-group">\
+                    <label for="sample-description">Sample & Population Description</label>\
+                    <textarea id="sample-description" name="sample-description" placeholder="Describe your research sample and population" required></textarea>\
+                </div>\
+                \
+                <div class="form-group">\
+                    <label for="research-instrument">Research Instrument (Questions, Interview Guide, etc.)</label>\
+                    <textarea id="research-instrument" name="research-instrument" placeholder="Paste your research instrument here (questionnaire items, interview questions, etc.)" rows="10" required></textarea>\
+                </div>\
+                \
+                <div class="form-group">\
+                    <label for="email">Email Address (for receiving the full report)</label>\
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>\
+                </div>\
+                \
+                <button type="submit" class="btn btn-block">Generate Preview Analysis</button>\
+            </form>\
+\
+            <div id="loading" class="loading hidden">\
+                <div class="spinner"></div>\
+                <p style="margin-left: 15px;">Analyzing your research instrument...</p>\
+            </div>\
+\
+            <div id="result-container" class="result-container">\
+                <h2 class="result-title">Analysis Preview</h2>\
+                \
+                <div class="result-preview">\
+                    <h3>Research Tool Analysis</h3>\
+                    <div id="analysis-metadata"></div>\
+                    \
+                    <div class="blur-overlay">\
+                        <div id="preview-content" class="blur-content"></div>\
+                        <div class="blur-message">\
+                            <p>Full analysis available after payment</p>\
+                        </div>\
+                    </div>\
+                </div>\
+                \
+                <div class="payment-options">\
+                    <h3 class="payment-title">Select Payment Option to Get Full Report</h3>\
+                    \
+                    <div class="payment-buttons">\
+                        <button id="local-payment-btn" class="btn">Pay 50 DZD (Local Payment)</button>\
+                        <button id="international-payment-btn" class="btn btn-secondary">Pay $2 USD (International)</button>\
+                    </div>\
+                </div>\
+            </div>\
+\
+            <div id="full-result" class="result-container hidden">\
+                <h2 class="result-title">Complete Analysis</h2>\
+                <div id="completed-analysis"></div>\
+                <button id="download-report" class="btn btn-block" style="margin-top: 20px;">Download Report as PDF</button>\
+            </div>\
+        </div>\
+    </main>\
+\
+    <footer>\
+        <div class="container footer-content">\
+            <div class="footer-logo">\
+                <div class="logo">\
+                    <div class="logo-icon">R</div>\
+                    <div class="logo-text">Research Pilot Tester</div>\
+                </div>\
+            </div>\
+            \
+            <p class="copyright">\'a9 2025 Research Pilot Tester. Created by Dr. Asma Khattala</p>\
+        </div>\
+    </footer>\
+\
+    <!-- Local payment modal -->\
+    <div id="local-payment-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000;">\
+        <div style="position: relative; background: var(--dark); max-width: 500px; margin: 100px auto; padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">\
+            <button onclick="document.getElementById('local-payment-modal').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: white; font-size: 20px; cursor: pointer;">\'d7</button>\
+            \
+            <h3 style="margin-bottom: 20px; color: var(--primary);">Local Payment (500 DZD)</h3>\
+            <p style="margin-bottom: 20px; color: #b8bec5;">Please send 500 DZD to one of the following payment methods:</p>\
+            \
+            <div style="margin-bottom: 20px;">\
+                <h4 style="margin-bottom: 10px;">RIP Account</h4>\
+                <p>RIP Number: 079999900165460218</p>\
+                <p>Name: Asma Khattala</p>\
+            </div>\
+            \
+            <div style="margin-bottom: 20px;">\
+                <h4 style="margin-bottom: 10px;">BaridiMob</h4>\
+                <p>Phone Number: 0551006860</p>\
+            </div>\
+            \
+            <p style="margin-bottom: 20px; color: #b8bec5;">After payment, please click the button below to confirm. Your analysis will be sent to your email immediately.</p>\
+            \
+            <button id="confirm-local-payment" class="btn btn-block">I've Made the Payment</button>\
+        </div>\
+    </div>\
+\
+    <!-- International payment modal -->\
+    <div id="international-payment-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000;">\
+        <div style="position: relative; background: var(--dark); max-width: 500px; margin: 100px auto; padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">\
+            <button onclick="document.getElementById('international-payment-modal').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: white; font-size: 20px; cursor: pointer;">\'d7</button>\
+            \
+            <h3 style="margin-bottom: 20px; color: var(--secondary);">International Payment ($2 USD)</h3>\
+            <p style="margin-bottom: 20px; color: #b8bec5;">Please send $2 USD to the following Wise account:</p>\
+            \
+            <div style="margin-bottom: 20px;">\
+                <h4 style="margin-bottom: 10px;">Wise Account</h4>\
+                <p>Email: asma.khatt@gmail.com</p>\
+                <p>Name: Asma Khattala</p>\
+            </div>\
+            \
+            <p style="margin-bottom: 20px; color: #b8bec5;">After payment, please click the button below to confirm. Your analysis will be sent to your email immediately.</p>\
+            \
+            <button id="confirm-international-payment" class="btn btn-secondary btn-block">I've Made the Payment</button>\
+        </div>\
+    </div>\
+\
+    <script>\
+        // API Key for Google Gemini - Replace with your key from Google AI Studio\
+        const API_KEY = "AIzaSyBbXah_hCxDd6Vu5tL1PAsoSXZZ2qmnqs4";\
+        \
+        document.addEventListener('DOMContentLoaded', function() \{\
+            const analysisForm = document.getElementById('analysis-form');\
+            const loadingIndicator = document.getElementById('loading');\
+            const resultContainer = document.getElementById('result-container');\
+            const fullResult = document.getElementById('full-result');\
+            const previewContent = document.getElementById('preview-content');\
+            const completedAnalysis = document.getElementById('completed-analysis');\
+            const analysisMetadata = document.getElementById('analysis-metadata');\
+            const localPaymentBtn = document.getElementById('local-payment-btn');\
+            const internationalPaymentBtn = document.getElementById('international-payment-btn');\
+            const localPaymentModal = document.getElementById('local-payment-modal');\
+            const internationalPaymentModal = document.getElementById('international-payment-modal');\
+            const confirmLocalPayment = document.getElementById('confirm-local-payment');\
+            const confirmInternationalPayment = document.getElementById('confirm-international-payment');\
+            const downloadReportBtn = document.getElementById('download-report');\
+            \
+            let fullAnalysisText = "";\
+            \
+            // Handle form submission\
+            analysisForm.addEventListener('submit', async function(e) \{\
+                e.preventDefault();\
+                \
+                // Show loading indicator\
+                loadingIndicator.classList.remove('hidden');\
+                resultContainer.style.display = 'none';\
+                fullResult.classList.add('hidden');\
+                \
+                // Get form data\
+                const researchTitle = document.getElementById('research-title').value;\
+                const researchQuestions = document.getElementById('research-questions').value;\
+                const sampleDescription = document.getElementById('sample-description').value;\
+                const researchInstrument = document.getElementById('research-instrument').value;\
+                const email = document.getElementById('email').value;\
+                \
+                // Prepare the prompt for Gemini API\
+                const prompt = `\
+                You are a research methods expert who conducts pilot testing of research instruments. Follow this exact analysis sequence:\
+                **1. FIRST CRITICAL LOOK**\
+                Before doing anything else, examine:\
+                A. Research Questions\
+                - Are they properly formulated?\
+                - Is terminology accurate? (e.g., "EFL students" vs "language learners")\
+                - Do they contain problematic words? (e.g., "effectively", "specifically")\
+                - Is there unnecessary repetition?\
+                B. Immediate Red Flags\
+                - Questions that assume practices exist\
+                - Questions that start too specifically\
+                - Redundant questions\
+                - Missing foundational questions\
+                - Logical sequence issues\
+                **2. ANALYSIS TABLE FORMAT**\
+                Create tables exactly like this:\
+                | Current Version | My Comments to You (The Candidate) | Type of Change | Suggested Version |\
+                In "Comments to You" section:\
+                - Speak directly as if teaching a student\
+                - Explain why something doesn't work\
+                - Give specific examples\
+                - Provide clear direction\
+                - Maintain professional tone\
+                **3. QUESTION ANALYSIS PRINCIPLES**\
+                For Each Question Ask:\
+                1. "Are we assuming something exists?"\
+                Example: "How do you use group work?" assumes they use group work\
+                Correct Approach: First ask IF they use group work\
+                2. "Is this question too specific too soon?"\
+                Example: Starting with class size effects before establishing context\
+                Correct Approach: Start with general teaching context\
+                3. "Is this redundant?"\
+                Example: Multiple questions about teacher feedback\
+                Correct Approach: Combine similar questions\
+                4. "Is this in the logical sequence?"\
+                Example: Asking about solutions before challenges\
+                Correct Approach: Establish problems first\
+                **4. LENGTH AND STRUCTURE**\
+                Enforce:\
+                - Interviews: 8-10 questions maximum\
+                - Clear introduction protocol\
+                - Proper demographic questions\
+                - Logical question sequence\
+                - Thank you statement\
+                **5. CRITICAL FEEDBACK STYLE**\
+                When providing comments:\
+                - "This question assumes [X]. We need to ask about [X] first."\
+                - "We need to know [X] before asking about [Y]."\
+                - "This is repeated in question [number]. Let's combine them."\
+                - "The sequence needs to be [explain proper order]."\
+                **6. TECHNICAL CHECKS**\
+                Review:\
+                - Spelling/grammar\
+                - Formatting consistency\
+                - Question numbering\
+                - Response options\
+                - Professional appearance\
+                **7. ESSENTIAL RULES**\
+                Never:\
+                - Accept questions that assume practices\
+                - Allow redundant questions\
+                - Skip from general to very specific\
+                - Miss logical sequence issues\
+                Always:\
+                - Start broad, then narrow\
+                - Check for assumptions\
+                - Suggest concrete improvements\
+                - Maintain teaching tone\
+                - Consider research context\
+\
+                Now analyze this research tool:\
+                \
+                Title: $\{researchTitle\}\
+                \
+                Research Questions: $\{researchQuestions\}\
+                \
+                Sample and Population: $\{sampleDescription\}\
+                \
+                Research Instrument: \
+                $\{researchInstrument\}\
+                `;\
+                \
+                try \{\
+               // Call our secure Cloudflare Worker proxy\
+const response = await fetch('https://your-worker-name.your-username.workers.dev', \{\
+    method: 'POST',\
+    headers: \{\
+        'Content-Type': 'application/json'\
+    \},\
+    body: JSON.stringify(\{\
+        contents: [\{\
+            parts: [\{\
+                text: prompt\
+            \}]\
+        \}]\
+    \})\
+\});\
+                    const data = await response.json();\
+                    \
+                    if (data.candidates && data.candidates[0].content) \{\
+                        // Store the full analysis text\
+                        fullAnalysisText = data.candidates[0].content.parts[0].text;\
+                        \
+                        // Create preview (first 300 characters of the analysis)\
+                        const previewText = fullAnalysisText;\
+                        \
+                        // Display metadata\
+                        analysisMetadata.innerHTML = `\
+                            <p><strong>Research Title:</strong> $\{researchTitle\}</p>\
+                            <p><strong>Analysis Date:</strong> $\{new Date().toLocaleDateString()\}</p>\
+                        `;\
+                        \
+                        // Set preview content (will be blurred by CSS)\
+                        previewContent.innerText = previewText;\
+                        \
+                        // Set full analysis content (hidden until payment)\
+                        completedAnalysis.innerHTML = convertMarkdownToHtml(fullAnalysisText);\
+                        \
+                        // Show result container\
+                        loadingIndicator.classList.add('hidden');\
+                        resultContainer.style.display = 'block';\
+                    \} else \{\
+                        throw new Error('Failed to analyze research instrument');\
+                    \}\
+                \} catch (error) \{\
+                    console.error('Error:', error);\
+                    alert('An error occurred while analyzing your research instrument. Please try again.');\
+                    loadingIndicator.classList.add('hidden');\
+                \}\
+            \});\
+            \
+            // Helper function to convert markdown to HTML (simple version)\
+            function convertMarkdownToHtml(markdown) \{\
+                return markdown\
+                    .replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>')\
+                    .replace(/\\*(.*?)\\*/g, '<em>$1</em>')\
+                    .replace(/\\n\\n/g, '<br><br>')\
+                    .replace(/\\n/g, '<br>')\
+                    .replace(/\\|\\s*([^|]*)\\s*\\|\\s*([^|]*)\\s*\\|\\s*([^|]*)\\s*\\|\\s*([^|]*)\\s*\\|/g, function(match, p1, p2, p3, p4) \{\
+                        return `<tr><td>$\{p1.trim()\}</td><td>$\{p2.trim()\}</td><td>$\{p3.trim()\}</td><td>$\{p4.trim()\}</td></tr>`;\
+                    \})\
+                    .replace(/(\\<tr\\>.*?\\<\\/tr\\>)/g, function(match) \{\
+                        if (match.includes('<td>Current Version</td>')) \{\
+                            return `<table><tr><th>Current Version</th><th>My Comments to You</th><th>Type of Change</th><th>Suggested Version</th></tr>$\{match\}`;\
+                        \}\
+                        return match;\
+                    \})\
+                    .replace(/(\\<\\/tr\\>)(?!\\s*\\<tr\\>)/g, '</tr></table>');\
+            \}\
+            \
+            // Show payment modals\
+            localPaymentBtn.addEventListener('click', function() \{\
+                localPaymentModal.style.display = 'block';\
+            \});\
+            \
+            internationalPaymentBtn.addEventListener('click', function() \{\
+                internationalPaymentModal.style.display = 'block';\
+            \});\
+            \
+            // Handle payment confirmation\
+            confirmLocalPayment.addEventListener('click', function() \{\
+                localPaymentModal.style.display = 'none';\
+                showFullAnalysis();\
+            \});\
+            \
+            confirmInternationalPayment.addEventListener('click', function() \{\
+                internationalPaymentModal.style.display = 'none';\
+                showFullAnalysis();\
+            \});\
+            \
+            // Show full analysis after payment\
+            function showFullAnalysis() \{\
+                resultContainer.style.display = 'none';\
+                fullResult.classList.remove('hidden');\
+                \
+                // In a real implementation, you would send the email with the full report here\
+                alert('Thank you for your payment! The full analysis has been sent to your email. You can also view it below.');\
+            \}\
+            \
+            // Download report as PDF\
+            downloadReportBtn.addEventListener('click', function() \{\
+                // In a real implementation, this would generate a proper PDF\
+                // For now, we'll just create a text file\
+                const element = document.createElement('a');\
+                const researchTitle = document.getElementById('research-title').value;\
+                const fileName = `Research_Analysis_$\{researchTitle.replace(/\\s+/g, '_')\}.txt`;\
+                \
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(fullAnalysisText));\
+                element.setAttribute('download', fileName);\
+                element.style.display = 'none';\
+                \
+                document.body.appendChild(element);\
+                element.click();\
+                document.body.removeChild(element);\
+            \});\
+        \});\
+    </script>\
+</body>\
+</html>}
