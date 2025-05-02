@@ -487,6 +487,10 @@
             position: relative;
         }
 
+        .preview-visible {
+            margin-bottom: 20px;
+        }
+        
         .blur-content {
             filter: blur(5px);
             user-select: none;
@@ -905,7 +909,7 @@
                         <div class="step">
                             <div class="step-number">3</div>
                             <h3 class="step-title">Make Payment</h3>
-                            <p class="step-desc">Choose your payment option - 50 DZD for Algerian users or $2 for international users</p>
+                            <p class="step-desc">Choose your payment option - 500 DZD for Algerian users or $3 for international users</p>
                         </div>
                         
                         <div class="step">
@@ -981,6 +985,8 @@
                         <h3>Research Tool Analysis</h3>
                         <div id="analysis-metadata"></div>
                         
+                        <div id="preview-visible" class="preview-visible"></div>
+                        
                         <div class="blur-overlay">
                             <div id="preview-content" class="blur-content"></div>
                             <div class="blur-message">
@@ -993,8 +999,8 @@
                         <h3 class="payment-title">Select Payment Option to Get Full Report</h3>
                         
                         <div class="payment-buttons">
-                            <button id="local-payment-btn" class="btn">Pay 50 DZD (Local Payment)</button>
-                            <button id="international-payment-btn" class="btn btn-secondary">Pay $2 USD (International)</button>
+                            <button id="local-payment-btn" class="btn">Pay 500 DZD (Local Payment)</button>
+                            <button id="international-payment-btn" class="btn btn-secondary">Pay $3 USD (International)</button>
                         </div>
                     </div>
                 </div>
@@ -1096,7 +1102,7 @@
         <div class="modal-content">
             <button class="close-modal" onclick="document.getElementById('local-payment-modal').style.display='none'">×</button>
             
-            <h3 style="margin-bottom: 20px; color: var(--primary);">Local Payment (50 DZD)</h3>
+            <h3 style="margin-bottom: 20px; color: var(--primary);">Local Payment (500 DZD)</h3>
             <p style="margin-bottom: 20px; color: #b8bec5;">Please send 50 DZD to one of the following payment methods:</p>
             
             <div style="margin-bottom: 20px;">
@@ -1120,7 +1126,7 @@
         <div class="modal-content">
             <button class="close-modal" onclick="document.getElementById('international-payment-modal').style.display='none'">×</button>
             
-            <h3 style="margin-bottom: 20px; color: var(--secondary);">International Payment ($2 USD)</h3>
+            <h3 style="margin-bottom: 20px; color: var(--secondary);">International Payment ($3 USD)</h3>
             <p style="margin-bottom: 20px; color: #b8bec5;">Please send $2 USD to the following Wise account:</p>
             
             <div style="margin-bottom: 20px;">
@@ -1489,8 +1495,31 @@
                             <p><strong>Analysis Date:</strong> ${new Date().toLocaleDateString()}</p>
                         `;
                         
-                        // Set preview content (will be blurred by CSS)
-                        previewContent.innerText = fullAnalysisText;
+                        // Extract initial part for visible preview
+                        const analysisLines = fullAnalysisText.split('\n');
+                        let visiblePreview = '';
+                        
+                        // Get the first section (up to 15 lines or first table, whichever comes first)
+                        for (let i = 0; i < Math.min(15, analysisLines.length); i++) {
+                            // Stop if we reach a table
+                            if (analysisLines[i].includes('|') && analysisLines[i].includes('Current Version')) {
+                                // Include table header
+                                visiblePreview += analysisLines[i] + '\n';
+                                // Include first data row if available
+                                if (i + 2 < analysisLines.length) {
+                                    visiblePreview += analysisLines[i+1] + '\n'; // separator row
+                                    visiblePreview += analysisLines[i+2] + '\n';
+                                }
+                                break;
+                            }
+                            visiblePreview += analysisLines[i] + '\n';
+                        }
+                        
+                        // Show visible preview (not blurred)
+                        document.getElementById('preview-visible').innerHTML = convertMarkdownToHtml(visiblePreview);
+                        
+                        // Set blurred content (rest of the analysis)
+                        previewContent.innerText = fullAnalysisText.substring(visiblePreview.length);
                         
                         // Set full analysis content (hidden until payment)
                         completedAnalysis.innerHTML = convertMarkdownToHtml(fullAnalysisText);
