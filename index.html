@@ -671,54 +671,54 @@
                 `;\
                 \
                 try \{\
-               // Call our secure Cloudflare Worker proxy\
-const response = await fetch('https://your-worker-name.your-username.workers.dev', \{\
-    method: 'POST',\
-    headers: \{\
-        'Content-Type': 'application/json'\
-    \},\
-    body: JSON.stringify(\{\
-        contents: [\{\
-            parts: [\{\
-                text: prompt\
-            \}]\
-        \}]\
-    \})\
-\});\
-                    const data = await response.json();\
-                    \
-                    if (data.candidates && data.candidates[0].content) \{\
-                        // Store the full analysis text\
-                        fullAnalysisText = data.candidates[0].content.parts[0].text;\
-                        \
-                        // Create preview (first 300 characters of the analysis)\
-                        const previewText = fullAnalysisText;\
-                        \
-                        // Display metadata\
-                        analysisMetadata.innerHTML = `\
-                            <p><strong>Research Title:</strong> $\{researchTitle\}</p>\
-                            <p><strong>Analysis Date:</strong> $\{new Date().toLocaleDateString()\}</p>\
-                        `;\
-                        \
-                        // Set preview content (will be blurred by CSS)\
-                        previewContent.innerText = previewText;\
-                        \
-                        // Set full analysis content (hidden until payment)\
-                        completedAnalysis.innerHTML = convertMarkdownToHtml(fullAnalysisText);\
-                        \
-                        // Show result container\
-                        loadingIndicator.classList.add('hidden');\
-                        resultContainer.style.display = 'block';\
-                    \} else \{\
-                        throw new Error('Failed to analyze research instrument');\
-                    \}\
-                \} catch (error) \{\
-                    console.error('Error:', error);\
-                    alert('An error occurred while analyzing your research instrument. Please try again.');\
-                    loadingIndicator.classList.add('hidden');\
-                \}\
-            \});\
-            \
+        try {
+    // Call our Cloudflare Worker instead of Google API directly
+    const response = await fetch('https://pilottesting1.asma-khatt.workers.dev', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            contents: [{
+                parts: [{
+                    text: prompt
+                }]
+            }]
+        })
+    });
+    
+    const data = await response.json();
+    
+    if (data.candidates && data.candidates[0].content) {
+        // Keep the rest of your existing code here
+        fullAnalysisText = data.candidates[0].content.parts[0].text;
+        
+        // Create preview (first 300 characters of the analysis)
+        const previewText = fullAnalysisText;
+        
+        // Display metadata
+        analysisMetadata.innerHTML = `
+            <p><strong>Research Title:</strong> ${researchTitle}</p>
+            <p><strong>Analysis Date:</strong> ${new Date().toLocaleDateString()}</p>
+        `;
+        
+        // Set preview content (will be blurred by CSS)
+        previewContent.innerText = previewText;
+        
+        // Set full analysis content (hidden until payment)
+        completedAnalysis.innerHTML = convertMarkdownToHtml(fullAnalysisText);
+        
+        // Show result container
+        loadingIndicator.classList.add('hidden');
+        resultContainer.style.display = 'block';
+    } else {
+        throw new Error('Failed to analyze research instrument');
+    }
+} catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred while analyzing your research instrument. Please try again.');
+    loadingIndicator.classList.add('hidden');
+}
             // Helper function to convert markdown to HTML (simple version)\
             function convertMarkdownToHtml(markdown) \{\
                 return markdown\
